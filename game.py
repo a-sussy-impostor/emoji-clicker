@@ -3,10 +3,17 @@
 # There's a secret!
 
 import os
+
+if os.getenv("GITHUB_ACTIONS") == "true":
+    print("Running On GitHub Actions")
+    os.system("pip install colorama")
+    
+# os.system("pip install discord.ext")
+
 from colorama import Fore as color
 from time import sleep as wait
 from random import randint
-from discord.ext import tasks
+# from discord.ext import tasks
 # Variables Setting
 cpc = 0
 clicks = 0
