@@ -69,7 +69,10 @@ while True:
        print(color.CYAN + "You finished the game!")
        print("Congratulations!")
        print("Keep playing!" + color.RESET)
-    q = input('Action: ')
+    try:
+        q = input('Action: ')
+    except EOFError:
+        pass
     if q == '':
        trapchance = randint(1,trap)
        print(f"You clicked once {emo}")
@@ -109,7 +112,10 @@ while True:
        print("16: ??? …… 00010101010100101010101001 --- $10110010001")
        print("17: Dont buy! …… This is dangerous.I’m warning you. --- $999999999999")
        print("18: Go Back")
-       x = input("Want to buy: ")
+       try:
+           x = input("Want to buy: ")
+       except EOFError:
+           pass
        p = 0
        ac = 0
        add = 0
@@ -249,14 +255,21 @@ while True:
         os.system('clear')
         print("Game Paused")
         print("Type anything to continue")
-        reply = input("Reply: ")
+        try:
+            reply = input("Reply: ")
+        except EOFError:
+            pass
     elif q == '6':
         print(color.RED + "You will lose all your progress.")
         print("Are you sure want to exit?")
         print("Type 999 to exit, anything else to cancel.")
-        leave = input("Answer: ")
+        try:
+            leave = input("Answer: ")
+        except:
+            leave = '999'
         if leave == '999':
-          raise NameError("Game Over.")
+          print("Game Over.")
+          sys("kill 1")
         else:
            print(color.RESET + "Action Cancelled.")
            wait(3)
